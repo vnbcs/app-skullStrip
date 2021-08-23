@@ -1,3 +1,6 @@
+# trying to make AFNI not whine about lack of display
+DISPLAY=":0"
+
 # load filename and optional parameters
 t1=`jq -r '.t1' config.json`
 optional_params=`jq -r '.optional_params' config.json`
