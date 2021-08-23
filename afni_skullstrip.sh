@@ -1,5 +1,5 @@
 # trying to make AFNI not whine about lack of display
-DISPLAY=":0"
+DISPLAY=localhost:0.0
 
 # load filename and optional parameters
 t1=`jq -r '.t1' config.json`
