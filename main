@@ -1,0 +1,10 @@
+# this app runs afni's skullstrip function over a nifti file
+
+#!/bin/bash
+
+#SBATCH --job-name=skullstrip
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=1G
+#SBATCH --time=00:15:00
+
+time singularity exec -e docker://brainlife/afni:16.3.0 ./afni_skullstrip.sh
