@@ -7,4 +7,6 @@
 #SBATCH --mem=1G
 #SBATCH --time=00:15:00
 
+chmod +x afni_skullstrip.sh
+
 time singularity exec -e docker://brainlife/afni:16.3.0 ./afni_skullstrip.sh
