@@ -11,15 +11,17 @@ t1_fn=$(echo $t1 | cut -d "." -f 1 | rev | cut -d "/" -f 1 | rev)
 output_fn=${t1_fn}_ss.nii.gz
 
 # create new directory skullStrip for t1w file and output
-mkdir skullStrip
+mkdir -p skullStrip
 
 # move file to new directory skullStrip
-if [ -f ./skullStrip/t1.nii.gz ];
-then
-  echo "file exists. skipping copying"
-else
-  cp -v ${t1} ./skullStrip/t1.nii.gz;
-fi
+install $t1 skullStrip/t1.nii.gz
+
+# if [ -f ./skullStrip/t1.nii.gz ];
+# then
+#   echo "file exists. skipping copying"
+# else
+#   cp -v ${t1} ./skullStrip/t1.nii.gz;
+# fi
 
 # run 3dSkullStrip
 if [ "$optional_params" != "null" ]; then
