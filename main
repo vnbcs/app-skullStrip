@@ -9,4 +9,4 @@
 
 chmod +x afni_skullstrip.sh
 
-time singularity exec -e /usr/bin/jq docker://afni/afni_dev_base:21.1.03 ./afni_skullstrip.sh
+time singularity exec -e docker://afni/afni_dev_base:21.1.03 ./afni_skullstrip.sh
