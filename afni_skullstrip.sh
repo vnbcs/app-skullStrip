@@ -1,5 +1,5 @@
 # trying to make AFNI not whine about lack of display
-DISPLAY=localhost:0.0
+#DISPLAY=localhost:0.0
 
 # load filename and optional parameters
 t1=`jq -r '.t1' config.json`
@@ -23,6 +23,10 @@ install $t1 skullStrip/t1.nii.gz
 #   cp -v ${t1} ./skullStrip/t1.nii.gz;
 # fi
 
+# please AFNI let me run this
+Xvfb :88 -screen 0 1024x768x24 >& /dev/null &
+setenv DISPLAY :88
+
 # run 3dSkullStrip
 if [ "$optional_params" != "null" ]; then
     # 3dSkullStrip -input ./skullStrip/t1.nii.gz -prefix anat_ss ${optional_params}
@@ -31,3 +35,6 @@ else
     # 3dSkullStrip -input ./skullStrip/t1.nii.gz -prefix anat_ss
     3dSkullStrip -input ./skullStrip/t1.nii.gz -prefix ${output_fn}
 fi
+
+unsetenv DISPLAY
+killall Xvfb
