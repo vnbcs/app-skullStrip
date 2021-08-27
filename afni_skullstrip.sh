@@ -10,11 +10,11 @@ optional_params=`jq -r '.optional_params' config.json`
 
 # following creates an output filename w a suffix
 # rather than AFNI's default prefix
-t1_fn=$(echo $t1 | cut -d "." -f 1 | rev | cut -d "/" -f 1 | rev)
-output_fn=skullStrip/${t1_fn}_ss.nii.gz
+# t1_fn=$(echo $t1 | cut -d "." -f 1 | rev | cut -d "/" -f 1 | rev)
+output_fn=t1_ss.nii.gz
 
 # create new directory skullStrip for t1w file and output
-echo "creating output folder..."
+echo "creating skullStrip folder..."
 mkdir -p skullStrip
 
 # move file to new directory skullStrip
@@ -27,5 +27,10 @@ if [ "$optional_params" != "null" ]; then
 else
     3dSkullStrip -input ./skullStrip/t1.nii.gz -prefix ${output_fn}
 fi
+
+# move output to output folder
+echo "creating output folder..."
+mkdir -p output
+cp t1_ss.nii.gz output/t1_ss.nii.gz
 
 echo "process complete"
