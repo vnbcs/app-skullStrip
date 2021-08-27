@@ -31,6 +31,6 @@ fi
 # move output to output folder
 echo "creating output folder..."
 mkdir -p output
-cp skullStrip/t1_ss.nii.gz output/t1_ss.nii.gz
+cp t1_ss.nii.gz output/t1_ss.nii.gz
 
 echo "process complete"
